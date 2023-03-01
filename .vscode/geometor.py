@@ -34,6 +34,7 @@ elif pil == 4:
 elif pil == 5:
     r = int(st.number_input("masukkan jari-jari alas kerucut: "))
     t = int(st.number_input("Masukkan tinggi kerucut: "))
+    v = ("Volume Kerucut adalah: ", volume_kerucut(r, t))
 else:
     v = ("Pilihan tidak valid!")
 u = st.button('Cek Hasil')
