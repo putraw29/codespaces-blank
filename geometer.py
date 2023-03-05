@@ -72,12 +72,11 @@ elif M =="kerucut":
 
 else:
     L = RuntimeError("Masukkan pilihan anda !!!")
-
-K = st.button("Cek Hasil")
-
-
+    
 with st.spinner("Please Wait..."):
     time.sleep(3)
+
+K = st.button("Cek Hasil")
 
 if K:
     st.success(L)
