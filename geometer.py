@@ -4,11 +4,6 @@ import time
 
 import streamlit as st
 
-with st.spinner("Please Wait..."):
-    time.sleep(3)
-   
-st.success("Done")
-
 def luas_permukaan_kubus(sisi):
     return 6 * sisi ** 2
 
@@ -79,6 +74,10 @@ else:
     L = RuntimeError("Masukkan pilihan anda !!!")
 
 K = st.button("Cek Hasil")
+
+
+with st.spinner("Please Wait..."):
+    time.sleep(3)
 
 if K:
     st.success(L)
