@@ -5,7 +5,9 @@ import time
 import streamlit as st
 
 with st.spinner("Please Wait..."):
-    time.sleep(5)
+    time.sleep(3)
+   
+st.success("Done")
 
 def luas_permukaan_kubus(sisi):
     return 6 * sisi ** 2
