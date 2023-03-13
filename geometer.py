@@ -38,7 +38,7 @@ st.title("Geometer Apps")
 
 st.subheader("pilihlah bangun ruang dibawah ini")
 
-M = st.selestbox("pilih salah satu", ["kubus", "balok", "tabung", "bola", "kerucut"])
+M = st.selectbox("pilih salah satu", ["kubus", "balok", "tabung", "bola", "kerucut"])
 
 if M == "kubus":
     s = int(st.number_input("Masukkan sisi kubus: "))
