@@ -41,32 +41,32 @@ st.subheader("pilihlah bangun ruang dibawah ini")
 M = st.selectbox("pilih salah satu", ["pilih...","kubus", "balok", "tabung", "bola", "kerucut"])
 
 if M == "kubus":
-    s = int(st.number_input("Masukkan sisi kubus: "))
+    s = (st.number_input("Masukkan sisi kubus: "))
     L = "luas permukaan kubus adalah: ", luas_permukaan_kubus(s)
     V = "volume kubus adalah: ", volume_kubus(s)
 
 elif M == "balok":
-    p = int(st.number_input("masukkan panjang balok: "))
-    l = int(st.number_input("masukkan lebar balok: "))
-    t = int(st.number_input("masukkan tinggi balok: "))
+    p = (st.number_input("masukkan panjang balok: "))
+    l = (st.number_input("masukkan lebar balok: "))
+    t = (st.number_input("masukkan tinggi balok: "))
     L = "luas permukaan balok adalah: ", luas_permukaan_balok(p, l, t)
     V = "volume balok adalah: ", volume_balok(p, l, t)
 
 elif M == "tabung":
-    r = int(st.number_input("masukkan jari jari tabung: "))
-    t = int(st.number_input("masukkan tinggi tabung: "))
+    r = (st.number_input("masukkan jari jari tabung: "))
+    t = (st.number_input("masukkan tinggi tabung: "))
     L = "luas permukaan tabung adalah: ", luas_permukaan_tabung(r, t)
     V = "volume tabung adalah: ", volume_tabung(r, t)
 
 elif M == "bola":
-    r = int(st.number_input("masukkan jari jari bola: "))
+    r = (st.number_input("masukkan jari jari bola: "))
     L = "luas permukaan bola adalah: ", luas_permukaan_bola(r)
     V = "volume bola: ", volume_bola(r)
 
 elif M =="kerucut":
-    r = int(st.number_input("masukkan jari jari kerucut: "))
-    t = int(st.number_input("masukkan panjang garis pelukis kerucut: "))
-    p = int(st.number_input("masukkan tinggi kerucut: "))
+    r = (st.number_input("masukkan jari jari kerucut: "))
+    p = (st.number_input("masukkan tinggi kerucut: "))
+    t = math.sqrt(r**2 + p**2)
     L = "Luas permukaan kerucut adalah: ", luas_permukaan_kerucut(r, t)
     V = "volume kerucut adalah: ", volume_kerucut(r, p)
 
