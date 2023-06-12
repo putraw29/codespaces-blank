@@ -116,3 +116,5 @@ e = tab3.button("Cek sisi miring")
 
 if e:
     tab3.success(d)
+
+st.caption("Made by Raditya Putra")
