@@ -87,11 +87,11 @@ A = tab2.radio("PIlih salah satu program", ["Akar 2", "Akar 3", "Pangkat"])
 
 if A == "Akar 2":
     B = tab2.number_input("Masukkan bilangan : ")
-    D = B ** 1/2
+    D = B ** (1/2)
 
 elif A == "Akar 3":
     H = tab2.number_input("Masukkan bilangan : ")
-    D = H ** 1/3
+    D = H ** (1/3)
 
 elif A == "Pangkat":
     E = tab2.number_input("Masukkan Bilangan : ")
