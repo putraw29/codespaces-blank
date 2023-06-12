@@ -80,4 +80,16 @@ if K:
     st.success(V)
     st.balloons()
 
+st.sidebar.title("Pythor")
+
+a = st.sidebar.number_input("Masukkan panjang sisi A")
+b = st.sidebar.number_input("Masukkan panjang sisi B")
+c = (a ** 2 + b ** 2) ** 0.5
+d = "Panjang sisi miring (C) adalah:", c
+
+e = st.sidebar.button("Cek sisi miring")
+
+if e:
+    st.sidebar.success(d)
+
 st.caption("Made By Raditya Putra")
