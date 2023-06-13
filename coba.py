@@ -1,5 +1,5 @@
 import streamlit as st
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import numpy as np
 
 def hitung_akar_dan_sumur(x1, x2):
