@@ -1,6 +1,6 @@
 import streamlit as st
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 def hitung_akar_dan_sumur(x1, x2):
     akar1 = (-x2 + np.sqrt(x2**2 - 4*x1)) / (2*x1)
