@@ -1,3 +1,4 @@
+#Import modul-modul yang diutuhkan
 import streamlit as st
 
 import math
@@ -71,9 +72,10 @@ def hitung_akar_dan_sumur(x1, x2):
 
     return akar1, akar2, sumbu_simetri, titik_puncak
 
-
+#Mengatur banyak tab
 tab1, tab2, tab3, tab4 = st.tabs(["Bangun ruang", "Akar pangkat", "Pythagoras", "Fungsi kuadrat"])
 
+#Tab1
 tab1.title("Geometer apps")
 
 tab1.subheader("pilihlah bangun ruang dibawah ini")
@@ -119,17 +121,15 @@ if K:
     tab1.success(L)
     tab1.success(V)
 
+#tab2
 tab2.title("Power and Root")
 
-A = tab2.radio("PIlih salah satu program", ["Akar 2", "Akar 3", "Pangkat"])
+A = tab2.radio("PIlih salah satu program", ["Akar", "Pangkat"])
 
-if A == "Akar 2":
+if A == "Akar":
     B = tab2.number_input("Masukkan bilangan : ")
-    D = B ** (1/2)
-
-elif A == "Akar 3":
-    H = tab2.number_input("Masukkan bilangan : ")
-    D = H ** (1/3)
+    C = tab2.number_input("Masukkan bilangan akar : ", value=0.1)
+    D = B ** (1/C)
 
 elif A == "Pangkat":
     E = tab2.number_input("Masukkan Bilangan : ")
@@ -141,24 +141,32 @@ G = tab2.button("Cek hasil")
 if G:
     tab2.success(D)
 
+#tab3
 tab3.title("Pythor")
 
-a = tab3.number_input("Masukkan panjang sisi A")
-b = tab3.number_input("Masukkan panjang sisi B")
-c = (a ** 2 + b ** 2) ** 0.5
-d = "Panjang sisi miring (C) adalah:", c
+radio3 = tab3.radio("PIlih salah satu program", ["Cari sisi miring", "Cari sisi tegak"])
 
-e = tab3.button("Cek sisi miring")
+if radio3 == "Cari sisi miring":
+    a = tab3.number_input("Masukkan panjang sisi A")
+    b = tab3.number_input("Masukkan panjang sisi B")
+    c = (a ** 2 + b ** 2) ** 0.5
+    d = "Panjang sisi miring (C) adalah:", c
 
-if e:
+elif radio3 == "Cari sisi tegak":
+    e = tab3.number_input("Masukkan panjang sisi miring (c)")
+    f = tab3.number_input("Masukkan panjang sisi tegak (a/b)")
+    g = (e ** 2 - f ** 2) ** 0.5
+    d = "Panjang sisi tegak (a/b) adalah:", g
+
+if tab3.button("Cek sisi yang dicari"):
     tab3.success(d)
 
-# Judul aplikasi
+#tab4
+# Judul tab4
 tab4.title("Persamaan dan Fungsi Kuadrat")
 
 # Input koefisien persamaan kuadrat
-d = 0.0000001
-a = tab4.number_input("Masukkan koefisien a", value=d)
+a = tab4.number_input("Masukkan koefisien a", value=0.0000001)
 b = tab4.number_input("Masukkan koefisien b")
 c = tab4.number_input("Masukkan koefisien c")
 
