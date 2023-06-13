@@ -157,7 +157,8 @@ if e:
 tab4.title("Persamaan dan Fungsi Kuadrat")
 
 # Input koefisien persamaan kuadrat
-a = tab4.number_input("Masukkan koefisien a")
+d = 0.0000001
+a = tab4.number_input("Masukkan koefisien a", value=d)
 b = tab4.number_input("Masukkan koefisien b")
 c = tab4.number_input("Masukkan koefisien c")
 
