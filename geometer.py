@@ -4,10 +4,6 @@ import math
 
 import time
 
-import numpy as np
-
-import matplotlib.pyplot as plt
-
 def luas_permukaan_kubus(sisi):
     return 6 * sisi ** 2
 
