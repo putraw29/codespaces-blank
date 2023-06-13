@@ -4,6 +4,10 @@ import math
 
 import time
 
+import numpy as np
+
+import matplotlib.pyplot as plt
+
 def luas_permukaan_kubus(sisi):
     return 6 * sisi ** 2
 
@@ -34,7 +38,7 @@ def luas_permukaan_kerucut(jari_jari, garis_pelukis):
 def volume_kerucut(jari_jari, tinggi):
     return 1/3 * 22/7 * jari_jari ** 2 * tinggi
 
-tab1, tab2, tab3 = st.tabs(["Bangun ruang", "Akar pangkat", "Pythagoras"])
+tab1, tab2, tab3, tab4 = st.tabs(["Bangun ruang", "Akar pangkat", "Pythagoras", "Fungsi kuadrat"])
 
 tab1.title("Geometer apps")
 
@@ -107,9 +111,7 @@ tab3.title("Pythor")
 
 a = tab3.number_input("Masukkan panjang sisi A")
 b = tab3.number_input("Masukkan panjang sisi B")
-
 c = (a ** 2 + b ** 2) ** 0.5
-
 d = "Panjang sisi miring (C) adalah:", c
 
 e = tab3.button("Cek sisi miring")
@@ -117,4 +119,81 @@ e = tab3.button("Cek sisi miring")
 if e:
     tab3.success(d)
 
-st.caption("Made by Raditya Putra")
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+def plot_fungsi_kuadrat(a, b, c):
+    x = np.linspace(-10, 10, 400)
+    y = a * x**2 + b * x + c
+
+    plt.plot(x, y)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Grafik Fungsi Kuadrat')
+    st.pyplot()
+
+def hitung_akar_kuadrat(a, b, c):
+    discriminant = b**2 - 4*a*c
+
+    if discriminant > 0:
+        x1 = (-b + np.sqrt(discriminant)) / (2*a)
+        x2 = (-b - np.sqrt(discriminant)) / (2*a)
+        return x1, x2
+    elif discriminant == 0:
+        x = -b / (2*a)
+        return x
+    else:
+        return None
+
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+def hitung_akar_dan_sumur(x1, x2):
+    akar1 = (-x2 + np.sqrt(x2**2 - 4*x1)) / (2*x1)
+    akar2 = (-x2 - np.sqrt(x2**2 - 4*x1)) / (2*x1)
+    sumbu_simetri = -x2 / (2*x1)
+    titik_puncak = x1*(sumbu_simetri**2) + x2*sumbu_simetri
+
+    return akar1, akar2, sumbu_simetri, titik_puncak
+
+# Judul aplikasi
+tab4.title("Persamaan dan Fungsi Kuadrat")
+
+# Input koefisien persamaan kuadrat
+a = tab4.number_input("Masukkan koefisien a")
+b = tab4.number_input("Masukkan koefisien b")
+c = tab4.number_input("Masukkan koefisien c")
+
+# Hitung akar-akar, sumbu simetri, dan titik puncak
+akar1, akar2, sumbu_simetri, titik_puncak = hitung_akar_dan_sumur(a, b)
+
+# Menampilkan akar-akar
+if tab4.button("tampilkan Akar-akar"):
+    tab4.write("Akar-akar persamaan kuadrat:")
+    tab4.write(f"Akar 1: {akar1}")
+    tab4.write(f"Akar 2: {akar2}")
+
+# Menampilkan sumbu simetri
+if tab4.button("Tampilkan sumbu simetri"):
+    tab4.write("Sumbu simetri:")
+    tab4.write(f"x = {sumbu_simetri}")
+
+# Menampilkan titik puncak
+if tab4.button("Tampilkan titik puncak"):
+    tab4.write("Titik puncak:")
+    tab4.write(f"({sumbu_simetri}, {titik_puncak})")
+
+# Menghasilkan data untuk grafik dan grafik
+if tab4.button("Tampilkan grafik dan data"):
+    x = np.linspace(-10, 10, 100)
+    y = a*(x**2) + b*x + c
+    fig, ax = plt.subplots()
+    ax.plot(x, y)
+    ax.axvline(x=sumbu_simetri, color='r', linestyle='--', label='Sumbu Simetri')
+    ax.plot(sumbu_simetri, titik_puncak, marker='o', color='g', label='Titik Puncak')
+    ax.legend()
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    tab4.pyplot(fig)
