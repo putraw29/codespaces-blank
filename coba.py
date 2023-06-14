@@ -1,6 +1,3 @@
-pip install git+https://github.com/AI-Yash/st-chat.git
-
-
 import streamlit as st
 from streamlit_chat import message
 from streamlit_extras.storage import file_state
