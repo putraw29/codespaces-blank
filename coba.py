@@ -1,18 +1,22 @@
 import streamlit as st
 
-def main():
-    # Judul aplikasi
-    st.title("Aplikasi Chat Sederhana")
+# Membuat daftar pesan
+messages = []
 
-    # Mendapatkan input teks dari pengguna
-    pesan = st.text_input("Pesan:", "")
+# Membuat sidebar dengan input field untuk pengguna
+user_input = st.sidebar.text_input("Pesan", "")
 
-    # Menampilkan pesan pengguna
-    if st.button("Kirim"):
-        st.write("Anda: " + pesan)
+# Menambahkan pesan pengguna ke daftar pesan
+if st.sidebar.button("Kirim"):
+    messages.append(("User", user_input))
+    user_input = ""
 
-    # Menampilkan balasan dari lawan chat
-    st.write("Lawan Chat: ...")
+# Menampilkan pesan
+st.title("Aplikasi Chat Streamlit")
 
-if __name__ == "__main__":
-    main()
+# Menampilkan pesan-pesan
+for sender, message in messages:
+    if sender == "User":
+        st.text_input("User", message, key=message)
+    else:
+        st.text_input("Bot", message, key=message)
