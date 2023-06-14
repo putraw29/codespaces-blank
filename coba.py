@@ -10,7 +10,7 @@ def main():
     # Loop untuk mengirim dan menerima pesan
     while True:
         # Tampilan daftar pesan
-        with st.beta_expander("Daftar Pesan"):
+        with st.expander("Daftar Pesan"):
             for pesan in pesan_pengguna:
                 st.write(pesan)
 
