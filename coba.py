@@ -10,7 +10,7 @@ def main():
     # Loop untuk mengirim dan menerima pesan
     while True:
         # Tampilan daftar pesan
-        with st.expander("Daftar Pesan"):
+        with st.beta_expander("Daftar Pesan"):
             for pesan in pesan_pengguna:
                 st.write(pesan)
 
@@ -22,6 +22,10 @@ def main():
             if pesan:
                 pesan_pengguna.append("Anda: " + pesan)
                 st.text_input("")
+
+        # Tombol Hapus
+        if st.button("Hapus Pesan"):
+            pesan_pengguna.clear()
 
         # Tombol Keluar
         if st.button("Keluar"):
