@@ -1,22 +1,25 @@
 import streamlit as st
 
-# Membuat daftar pesan
-messages = []
+# Menyimpan pesan dari pengguna
+pesan_pengguna = []
 
-# Membuat sidebar dengan input field untuk pengguna
-user_input = st.sidebar.text_input("Pesan", "")
+def main():
+    # Judul aplikasi
+    st.title("Aplikasi Chat Sederhana")
 
-# Menambahkan pesan pengguna ke daftar pesan
-if st.sidebar.button("Kirim"):
-    messages.append(("User", user_input))
-    user_input = ""
+    # Tampilan daftar pesan
+    with st.beta_expander("Daftar Pesan"):
+        for pesan in pesan_pengguna:
+            st.write("Anda: " + pesan)
 
-# Menampilkan pesan
-st.title("Aplikasi Chat Streamlit")
+    # Input pesan pengguna
+    pesan = st.text_input("Pesan:", "")
 
-# Menampilkan pesan-pesan
-for sender, message in messages:
-    if sender == "User":
-        st.text_input("User", message, key=message)
-    else:
-        st.text_input("Bot", message, key=message)
+    # Tombol Kirim
+    if st.button("Kirim"):
+        if pesan:
+            pesan_pengguna.append(pesan)
+            st.text_input("")
+
+if __name__ == "__main__":
+    main()
