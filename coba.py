@@ -1,28 +1,29 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
 
-# Create a list to store the chat messages
-messages = []
+# Fungsi untuk menyelesaikan soal matematika
+def solve_math_problem(problem):
+    try:
+        result = eval(problem)
+        return result
+    except:
+        return "Error: Masukkan soal matematika yang valid"
 
-# Create a function to add a new message to the chat
-def add_message(message):
-    messages.append(message)
+# Fungsi utama untuk tampilan chatbot
+def chatbot():
+    st.title("Chatbot Matematika")
+    st.write("Selamat datang! Saya adalah Chatbot Matematika yang siap membantu Anda.")
+    
+    # Loop chatbot
+    while True:
+        user_input = st.text_input("Tulis soal matematika Anda di sini:")
+        
+        if user_input:
+            response = solve_math_problem(user_input)
+            st.write("Hasil:", response)
+        
+        if st.button("Keluar"):
+            break
 
-# Create a function to display the chat messages
-def display_messages():
-    st.write("Chat Messages")
-    st.table(messages)
-
-# Create a sidebar to select the user
-st.sidebar.title("Select User")
-user1 = st.sidebar.selectbox("User 1", ["User 1", "User 2"])
-user2 = st.sidebar.selectbox("User 2", ["User 1", "User 2"])
-
-# Create a button to send a message
-if st.button("Send Message"):
-    message = st.text_input("Message")
-    add_message(f"{user1}: {message}")
-
-# Display the chat messages
-display_messages()
+# Menjalankan chatbot
+chatbot()
