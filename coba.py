@@ -1,29 +1,49 @@
 import streamlit as st
-import numpy as np
 
-# Fungsi untuk menyelesaikan soal matematika
-def solve_math_problem(problem):
-    try:
-        result = eval(problem)
-        return result
-    except:
-        return "Error: Masukkan soal matematika yang valid"
+def main():
+    st.title("Card Button")
 
-# Fungsi utama untuk tampilan chatbot
-def chatbot():
-    st.title("Chatbot Matematika")
-    st.write("Selamat datang! Saya adalah Chatbot Matematika yang siap membantu Anda.")
-    
-    # Loop chatbot
-    while True:
-        user_input = st.text_input("Tulis soal matematika Anda di sini:")
-        
-        if user_input:
-            response = solve_math_problem(user_input)
-            st.write("Hasil:", response)
-        
-        if st.button("Keluar"):
-            break
+    # Card 1
+    col1, col2, col3 = st.beta_columns(3)
+    with col1:
+        st.markdown(
+            """
+            [![Card 1](https://via.placeholder.com/150)](https://www.example.com)
+            """
+        )
+    with col2:
+        st.markdown(
+            """
+            [![Card 2](https://via.placeholder.com/150)](https://www.example.com)
+            """
+        )
+    with col3:
+        st.markdown(
+            """
+            [![Card 3](https://via.placeholder.com/150)](https://www.example.com)
+            """
+        )
 
-# Menjalankan chatbot
-chatbot()
+    # Card 2
+    col4, col5, col6 = st.beta_columns(3)
+    with col4:
+        st.markdown(
+            """
+            [![Card 4](https://via.placeholder.com/150)](https://www.example.com)
+            """
+        )
+    with col5:
+        st.markdown(
+            """
+            [![Card 5](https://via.placeholder.com/150)](https://www.example.com)
+            """
+        )
+    with col6:
+        st.markdown(
+            """
+            [![Card 6](https://via.placeholder.com/150)](https://www.example.com)
+            """
+        )
+
+if __name__ == "__main__":
+    main()
