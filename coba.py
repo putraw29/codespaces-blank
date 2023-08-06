@@ -1,49 +1,36 @@
 import streamlit as st
+import random
+import transformers
 
-def main():
-    st.title("Card Button")
+# Set the title of the page
+st.title("Streamlit AI Chatbot")
 
-    # Card 1
-    col1, col2, col3 = st.beta_columns(3)
-    with col1:
-        st.markdown(
-            """
-            [![Card 1](https://via.placeholder.com/150)](https://www.example.com)
-            """
-        )
-    with col2:
-        st.markdown(
-            """
-            [![Card 2](https://via.placeholder.com/150)](https://www.example.com)
-            """
-        )
-    with col3:
-        st.markdown(
-            """
-            [![Card 3](https://via.placeholder.com/150)](https://www.example.com)
-            """
-        )
+# Initialize the chatbot
+model = transformers.AutoModelForSeq2SeqLM.from_pretrained("distilbert-base-uncased")
 
-    # Card 2
-    col4, col5, col6 = st.beta_columns(3)
-    with col4:
-        st.markdown(
-            """
-            [![Card 4](https://via.placeholder.com/150)](https://www.example.com)
-            """
-        )
-    with col5:
-        st.markdown(
-            """
-            [![Card 5](https://via.placeholder.com/150)](https://www.example.com)
-            """
-        )
-    with col6:
-        st.markdown(
-            """
-            [![Card 6](https://via.placeholder.com/150)](https://www.example.com)
-            """
-        )
+# Function for generating a bot response
+def get_bot_response(user_input):
+    bot_response = model.generate(
+        text=user_input,
+        max_length=128,
+        temperature=0.7,
+        top_k=5,
+        do_sample=True,
+    )
+    return bot_response
 
-if __name__ == "__main__":
-    main()
+# Display the chat history
+for message in chat_history:
+    st.write(message)
+
+# Get the user's input
+user_input = st.text_input("Your input:")
+
+# Add the user's input to the chat history
+chat_history.append(f"User: {user_input}")
+
+# Generate a bot response
+bot_response = get_bot_response(user_input)
+
+# Display the bot's response
+st.write(f"Bot: {bot_response}")
